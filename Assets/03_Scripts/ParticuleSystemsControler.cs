@@ -14,6 +14,9 @@ public class ParticuleSystemsControler : MonoBehaviour
     public Vector4 color1 = new Vector4(0f, 0f, 0f);
     public Vector4 color2 = new Vector4(0f, 0f, 0f);
 
+
+    private EmotionPreset preset;
+
     [Range(1f, 10f)]
     public float SliderStartLifeTime = 10f;
 
@@ -73,6 +76,7 @@ public class ParticuleSystemsControler : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
         var shape = ps.shape;
 
+
         osc.SetAddressHandler("/EmotionXY", OnReceiveEmoXY);
 
     }
@@ -81,10 +85,49 @@ public class ParticuleSystemsControler : MonoBehaviour
     {
         float x = oscM.GetFloat(0);
         float y = oscM.GetFloat(1);
-        SliderVelSpeed = x;
-        SliderNoiseXStrength = y;
+        //SliderVelSpeed = x;
+        //SliderNoiseXStrength = y;
         string msg = "OSC: " + x.ToString() + " : " + y.ToString();
         Debug.Log(oscM);
+
+        EmotionPreset preset = EmotionPreset.interpPreset(new Vector2(x, y));
+
+        //not every param on the table is in this slider list - check to
+        // see which ones are missing
+
+
+        color1 = preset.Color1;
+        color2 = preset.Color2;
+
+        // ??? preset.ShapePos;
+        SliderVeloLinearX = preset.VeloLin.x;
+        SliderVeloLinearY = preset.VeloLin.y;
+        SliderVeloLinearZ = preset.VeloLin.z;
+
+        SliderVeloOrbX = preset.VeloOrb.x;
+        SliderVeloOrbY = preset.VeloOrb.y;
+        SliderVeloOrbZ = preset.VeloOrb.z;
+
+        SliderVeloRadial = preset.VeloRad;
+        SliderVelSpeed = preset.VeloSpd;
+
+        // ??? preset.VeloLimSpd;
+        // ??? preset.VeloDmp;
+
+        SliderNoiseXStrength = preset.NoiseStr.x;
+        SliderNoiseYStrength = preset.NoiseStr.y;
+        SliderNoiseZStrength = preset.NoiseStr.z;
+
+        SliderNoiseFrequency = preset.NoiseFrq;
+        SliderNoiseSpeed = preset.NoiseSpd;
+        SliderNoisePosition = preset.NoisePos;
+        SliderNoiseRotation = preset.NoiseRot;
+
+        SliderNoiseScale = preset.NoiseScl;
+
+        // ??? preset.SizeLif;
+
+        
     }
 
     void Update()
@@ -163,5 +206,7 @@ public class ParticuleSystemsControler : MonoBehaviour
         sz.size = new ParticleSystem.MinMaxCurve(SizeLife, curve);
 
     }
+
+   
 
 }

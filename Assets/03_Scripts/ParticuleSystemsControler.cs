@@ -7,15 +7,16 @@ public class ParticuleSystemsControler : MonoBehaviour
 {
     public OSC osc;
     ParticleSystem ps;
-    
+
     Gradient lifeGradient;
     Gradient speedGradient;
-    
+
     public Vector4 color1 = new Vector4(0f, 0f, 0f);
+    public Vector4 color2 = new Vector4(0f, 0f, 0f);
 
     [Range(1f, 10f)]
     public float SliderStartLifeTime = 10f;
-   
+
     [Range(200f, 2500f)]
     public float SliderEmitValue = 200.0f;
 
@@ -28,22 +29,22 @@ public class ParticuleSystemsControler : MonoBehaviour
     public float SliderVeloLinearY;
     [Range(-50f, 50f)]
     public float SliderVeloLinearZ = 0.0f;
-    [Range(0f, 10f)]
+    [Range(0f, 2f)]
     public float SliderVeloOrbX = 0.0f;
-    [Range(0f, 10f)]
+    [Range(0f, 2f)]
     public float SliderVeloOrbY = 0.0f;
-    [Range(0f, 10f)]
+    [Range(0f, 2f)]
     public float SliderVeloOrbZ = 0.0f;
     [Range(-30f, 30f)]
     public float SliderVeloRadial = 0.0f;
-    [Range(-30f, 30f)]
+    [Range(-6f, 6f)]
     public float SliderVelSpeed;
 
     [Range(0f, 1f)]
     public float LimitVeloSpeed = 0f;
-    [Range(0f, .1f)]
+    [Range(0f, 1f)]
     public float LimitVeloDampen = 0f;
-    
+
     [Range(-100f, 100f)]
     public float SliderNoiseXStrength = 0.0f;
     [Range(-100f, 100f)]
@@ -107,16 +108,16 @@ public class ParticuleSystemsControler : MonoBehaviour
         var colorBySpeedModule = ps.colorBySpeed;
         colorBySpeedModule.enabled = false;
 
-        
+
         colorOverLifeModule.color = lifeGradient;
         colorBySpeedModule.color = speedGradient;
 
 
         lifeGradient = new Gradient();
         lifeGradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(color1, 0.0f), new GradientColorKey(Color.red, 1.0f) },
+            new GradientColorKey[] { new GradientColorKey(color1, 0.0f), new GradientColorKey(color2, 1.0f) },
             new GradientAlphaKey[] { new GradientAlphaKey(0f, 0f), new GradientAlphaKey(1f, .1f), new GradientAlphaKey(1f, .9f), new GradientAlphaKey(0f, 1f) }
-           
+
         );
 
         colorOverLifeModule.color = new ParticleSystem.MinMaxGradient(lifeGradient);
@@ -154,13 +155,13 @@ public class ParticuleSystemsControler : MonoBehaviour
 
         var sz = ps.sizeOverLifetime;
         sz.enabled = true;
-        
+
         AnimationCurve curve = new AnimationCurve();
         curve.AddKey(0.0f, .1f);
         curve.AddKey(0.75f, 1f);
-        
+
         sz.size = new ParticleSystem.MinMaxCurve(SizeLife, curve);
 
-    }   
+    }
 
 }

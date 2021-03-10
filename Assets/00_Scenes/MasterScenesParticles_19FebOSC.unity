@@ -4885,14 +4885,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 418972984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aefa535ab30c948b8b71009b9c13e9d7, type: 3}
+  m_Script: {fileID: 11500000, guid: d91511ee54c964e49b789b9c482f803a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   osc: {fileID: 898444424}
-  color1: {x: -9, y: 0.06, z: 0.4, w: 0}
+  color1: {x: 0, y: 0, z: 0, w: 0}
+  color2: {x: 0, y: 0, z: 0, w: 0}
   SliderStartLifeTime: 10
-  SliderEmitValue: 2500
-  ShapePosition: {x: 0, y: 0, z: 100}
+  SliderEmitValue: 200
+  ShapePosition: {x: 0, y: 0, z: 0}
   ShapeRotation: {x: 0, y: 0, z: 0}
   SliderVeloLinearX: 0
   SliderVeloLinearY: 0
@@ -4900,20 +4901,19 @@ MonoBehaviour:
   SliderVeloOrbX: 0
   SliderVeloOrbY: 0
   SliderVeloOrbZ: 0
-  SliderVeloRadial: 10
-  SliderVelSpeed: 0.1
+  SliderVeloRadial: 0
+  SliderVelSpeed: 0
   LimitVeloSpeed: 0
   LimitVeloDampen: 0
   SliderNoiseXStrength: 0
-  SliderNoiseYStrength: 100
-  SliderNoiseZStrength: 100
-  SliderNoiseFrequency: 0.005
-  SliderNoiseSpeed: 10
-  SliderNoisePosition: 20
-  SliderNoiseRotation: 0.28
-  SliderNoiseScale: 0.85
-  damping: 1
-  SizeLife: 2
+  SliderNoiseYStrength: 0
+  SliderNoiseZStrength: 0
+  SliderNoiseFrequency: 0
+  SliderNoiseSpeed: 0
+  SliderNoisePosition: 0
+  SliderNoiseRotation: 0
+  SliderNoiseScale: 0
+  SizeLife: 1
 --- !u!1 &898444423
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,18 +78,18 @@ public class EmotionPreset
             res.Color2 += emos[i].Color2 * w;
             res.ShapePos += emos[i].ShapePos * w;
             res.VeloLin += emos[i].VeloLin * w;
-            res.VeloOrb = emos[i].VeloOrb * w;
-            res.VeloRad = emos[i].VeloRad * w;
-            res.VeloSpd = emos[i].VeloSpd * w;
-            res.VeloLimSpd = emos[i].VeloLimSpd * w;
-            res.VeloDmp = emos[i].VeloDmp * w; //NOTE: is this supposed to be on/off?
-            res.NoiseStr = emos[i].NoiseStr * w;
-            res.NoiseFrq = emos[i].NoiseFrq * w;
-            res.NoiseSpd = emos[i].NoiseSpd * w;
-            res.NoisePos = emos[i].NoisePos * w;
-            res.NoiseRot = emos[i].NoiseRot * w;
-            res.NoiseScl = emos[i].NoiseScl * w;
-            res.SizeLif = emos[i].SizeLif * w;
+            res.VeloOrb += emos[i].VeloOrb * w;
+            res.VeloRad += emos[i].VeloRad * w;
+            res.VeloSpd += emos[i].VeloSpd * w;
+            res.VeloLimSpd += emos[i].VeloLimSpd * w;
+            res.VeloDmp += emos[i].VeloDmp * w; //NOTE: is this supposed to be on/off?
+            res.NoiseStr += emos[i].NoiseStr * w;
+            res.NoiseFrq += emos[i].NoiseFrq * w;
+            res.NoiseSpd += emos[i].NoiseSpd * w;
+            res.NoisePos += emos[i].NoisePos * w;
+            res.NoiseRot += emos[i].NoiseRot * w;
+            res.NoiseScl += emos[i].NoiseScl * w;
+            res.SizeLif += emos[i].SizeLif * w;
 
         }
         
@@ -147,21 +147,21 @@ public class EmotionPreset
     {
         EmotionPreset preset = new EmotionPreset();
         preset.ShapePos = new Vector3(0, 0, 400);
-        preset.Color1 = new Vector3(0, 0.35f, 0);
-        preset.Color2 = new Vector3(1, 0, 0);
-        preset.VeloLin = new Vector3(0, 0, 3);
-        preset.VeloOrb = new Vector3(0, 1.6f, 0.6f);
-        preset.VeloRad = 30;
-        preset.VeloSpd = 0.6f;
+        preset.Color1 = new Vector3(0, 0.06f, 1);
+        preset.Color2 = new Vector3(0.05f, 0.1f, 0.4f);
+        preset.VeloLin = new Vector3(50, 0, 0);
+        preset.VeloOrb = new Vector3(0.5f, 0, 0.3f);
+        preset.VeloRad = 0;
+        preset.VeloSpd = 0.1f;
         preset.VeloLimSpd = 0;
-        preset.VeloDmp = 0.02f;
-        preset.NoiseStr = new Vector3(38, -2, 0);
-        preset.NoiseFrq = 0.00189f;
-        preset.NoiseSpd = 10;
-        preset.NoisePos = 20;
-        preset.NoiseRot = 1;
+        preset.VeloDmp = 0;
+        preset.NoiseStr = new Vector3(10, 30, -70);
+        preset.NoiseFrq = 0.0015f;
+        preset.NoiseSpd = 0.5f;
+        preset.NoisePos = -4.2f;
+        preset.NoiseRot = 0.3f;
         preset.NoiseScl = 0.8f;
-        preset.SizeLif = 2f;
+        preset.SizeLif = 1.9f;
 
         preset.EmoCoords = new Vector2(1, -1);
 
@@ -175,9 +175,9 @@ public class EmotionPreset
         preset.Color1 = new Vector3(0.21f, 0, 0.45f);
         preset.Color2 = new Vector3(0, 0, 0.39f);
         preset.VeloLin = new Vector3(3, 50, -50);
-        preset.VeloOrb = new Vector3(0.8f, 1.09f, 1);
+        preset.VeloOrb = new Vector3(0.8f, 1.09f, 0.42f);
         preset.VeloRad = -30;
-        preset.VeloSpd = 0.8f;
+        preset.VeloSpd = 0.1f;
         preset.VeloLimSpd = 0;
         preset.VeloDmp = 0;
         preset.NoiseStr = new Vector3(-100, 0, 0);
@@ -196,22 +196,22 @@ public class EmotionPreset
     public static EmotionPreset getAnger()
     {
         EmotionPreset preset = new EmotionPreset();
-        preset.ShapePos = new Vector3(0, 0, 450);
-        preset.Color1 = new Vector3(0.21f, 0, 0.45f);
-        preset.Color2 = new Vector3(0, 0, 0.39f);
-        preset.VeloLin = new Vector3(3, 50, -50);
-        preset.VeloOrb = new Vector3(0.8f, 1.09f, 1);
+        preset.ShapePos = new Vector3(0, 0, 0);
+        preset.Color1 = new Vector3(0.48f, 0, 1.14f);
+        preset.Color2 = new Vector3(0, 3.14f, 0);
+        preset.VeloLin = new Vector3(0, 0, 0);
+        preset.VeloOrb = new Vector3(0, 0.16f, 0.15f);
         preset.VeloRad = -30;
-        preset.VeloSpd = 0.8f;
+        preset.VeloSpd = 1.31f;
         preset.VeloLimSpd = 0;
         preset.VeloDmp = 0;
-        preset.NoiseStr = new Vector3(-100, 0, 0);
-        preset.NoiseFrq = 0.003f;
-        preset.NoiseSpd = 10;
-        preset.NoisePos = 3;
-        preset.NoiseRot = 0;
-        preset.NoiseScl = 0.9f;
-        preset.SizeLif = 0.5f;
+        preset.NoiseStr = new Vector3(8, 0, -4);
+        preset.NoiseFrq = 0.005f;
+        preset.NoiseSpd = 5;
+        preset.NoisePos = -7;
+        preset.NoiseRot = 0.5f;
+        preset.NoiseScl = 0.248f;
+        preset.SizeLif = 1.26f;
 
         preset.EmoCoords = new Vector2(-1, 1);
 

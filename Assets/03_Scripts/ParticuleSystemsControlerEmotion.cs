@@ -7,6 +7,7 @@ public class ParticuleSystemsControlerEmotion : MonoBehaviour
 {
     public OSC osc;
     public GameObject forceField;
+    public GameObject posMarker;
     ParticleSystem ps;
 
     Gradient lifeGradient;
@@ -79,6 +80,7 @@ public class ParticuleSystemsControlerEmotion : MonoBehaviour
 
         osc.SetAddressHandler("/EmotionXY", OnReceiveEmoXY);
         osc.SetAddressHandler("/EEGGamma", onReceiveGamma);
+        osc.SetAddressHandler("/muse/elements/gamma_absolute", onReceiveGamma);
 
         SetXY(0,0);
 
@@ -86,18 +88,20 @@ public class ParticuleSystemsControlerEmotion : MonoBehaviour
 
     private void onReceiveGamma(OscMessage oscM)
     {
-        float TP9 = oscM.GetFloat(0);
-        float AF7 = oscM.GetFloat(1);
-        float AF8 = oscM.GetFloat(2);
-        float TP10 = oscM.GetFloat(3);
-        
+        float TP9 = oscM.GetFloat(0) + 1;
+        float AF7 = oscM.GetFloat(1) + 1;
+        float AF8 = oscM.GetFloat(2) + 1;
+        float TP10 = oscM.GetFloat(3) + 1;
         
 
         float Valence = (TP9-TP10)/(TP9+TP10);
         float Arousal = (AF7-AF8)/(AF7+AF8);
+        if (float.IsNaN(Valence)) Valence = 0.0f;
+        if (float.IsNaN(Arousal)) Arousal = 0.0f;
 
-        string msg = "OSC: V " + Valence.ToString() + "; A: " + Arousal.ToString();
-       // Debug.Log(msg);
+        string msg = "V: " + Valence.ToString()+ "A: " + Arousal.ToString();
+        Debug.Log(msg);
+        SetXY(Valence,Arousal);
 
     }
 
@@ -110,15 +114,16 @@ public class ParticuleSystemsControlerEmotion : MonoBehaviour
         string msg = "OSC: " + x.ToString() + " : " + y.ToString();
         //Debug.Log(oscM);
         SetXY(x, y);
-        float x_force = x*500; // -500 to 500 is current window
-        float y_force = 135 + y*300;
-        forceField.transform.position = new Vector3(x_force,y_force,300);
-
-        
     }
 
     void SetXY(float x, float y)
     {
+
+        float x_force = x*1100; // -500 to 500 is current window
+        float y_force = y*620;
+        forceField.transform.position = new Vector3(x_force,y_force,300);
+        posMarker.transform.position = new Vector3(x_force,y_force,300);
+
         
         EmotionPreset preset = EmotionPreset.interpPreset(new Vector2(x, y));
 

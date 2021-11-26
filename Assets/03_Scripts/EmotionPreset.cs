@@ -68,7 +68,7 @@ public class EmotionPreset
         for (int i=0; i< emos.Length; i++)
         {
             weights[i] = weights[i] / sum;
-            Debug.Log("weight " + i.ToString() + " = " + weights[i].ToString());
+            //Debug.Log("weight " + i.ToString() + " = " + weights[i].ToString());
         }
 
         for (int i=0; i< emos.Length; i++)
